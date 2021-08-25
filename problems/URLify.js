@@ -1,35 +1,44 @@
-/**
- * Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient space at the end to hold the additional characters,
- * and that you are given the "true" length of the string. (Note: if implementing in Java, please use a character array so that you can perform this operation in place.)
- *
- * EXAMPLE:
- * Input: "Mr   John   Smith   ", 13
- * Output: "Mr%20Hohn%20Smith"
- *
- */
+// not implemented yet
+// trying not to create a new string or array
+// simply trying to manipulate the existing string
+const soln2 = (inputString, length) => {
+	for(let i=0; i < length; i++){
+		if(inputString[i] === ' ')
+			inputString[i] = SPACE_CHAR;
+	}
+	inputString.trim();
+	return inputString;
+}
 
-let replace = (stringMain, stringLength) => {
-  let string = new Array(stringLength);
-  let tempString = "";
 
-  if (stringLength < 1) {
-    return stringMain;
-  }
-  for (let i = 0; i < stringLength; i++) {
-    if (stringMain[i] === " ") {
-      string[i] = "%20";
-    } else {
-      string[i] = stringMain[i];
-    }
-  }
-  for (let i = 0; i < string.length; i++) {
-    tempString += string[i];
-  }
-  return tempString;
-};
+const soln1 = (inputString, length) => {
+	let newStringArray = new Array(length);
+	let newString = "";
 
-let str = "Pr Anaya Shre Stha   ";
-console.log(replace(str, 18));
+	for(let i=0; i < length; i++){
+		if(inputString[i] === ' ')
+			newStringArray[i] = "%20";
+			// newString.concat("%20");
+		else
+			newStringArray[i] = inputString[i];
+			// newString.concat(inputString[i])
+			
+	}
 
-//Time : O(N)
-//Space: O(N)
+	for(let i=0; i<length; i++){
+		newString += newStringArray[i]
+	}
+
+	return newString;
+}
+
+
+let inputString = "Hello Wor ld      ";
+let length = 11;
+const SPACE_CHAR = "%20";
+
+
+const result = soln1(inputString, length);
+console.log(result)
+
+
